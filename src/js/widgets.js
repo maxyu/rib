@@ -131,6 +131,18 @@ var BWidgetRegistry = {
         }
     },
 
+    CanBeDisabled: {
+        parent: "Base",
+        allowIn: [],
+        properties: {
+            disabled: {
+                type: "boolean",
+                defaultValue: "false",
+                htmlAttribute: "disabled",
+            }
+        }
+    },
+
     /**
      * The root object for a user's application design.
      */
@@ -555,7 +567,7 @@ var BWidgetRegistry = {
      * a "value" property that defines the default.
      */
     Slider: {
-        parent: "Base",
+        parent: "CanBeDisabled",
         paletteImageName: "jqm_slider.svg",
         properties: {
             // TODO: What's this for? wouldn't text be in an associated label?
@@ -591,11 +603,6 @@ var BWidgetRegistry = {
                 options: [ "default", "a", "b", "c", "d", "e" ],
                 defaultValue: "default"
             },
-            disabled: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "disabled",
-            }
         },
         editable: {
             selector: "label",
@@ -671,7 +678,7 @@ var BWidgetRegistry = {
      * Represents a text entry.
      */
     TextInput: {
-        parent: "Base",
+        parent: "CanBeDisabled",
         displayLabel: "Text Input",
         paletteImageName: "jqm_text_input.svg",
         editable: {
@@ -697,11 +704,6 @@ var BWidgetRegistry = {
                 defaultValue: "",
                 htmlAttribute: "value"
             },
-            disabled: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "disabled",
-            }
         },
         template: '<input type="text">',
     },
@@ -712,7 +714,7 @@ var BWidgetRegistry = {
     TextArea: {
         // FIXME: good form is to include a <label> with all form elements
         //        and wrap them in a fieldcontain
-        parent: "Base",
+        parent: "CanBeDisabled",
         displayLabel: "Text Area",
         paletteImageName: "jqm_text_area.svg",
         editable: {
@@ -737,11 +739,6 @@ var BWidgetRegistry = {
                 type: "string",
                 defaultValue: "",
             },
-            disabled: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "disabled",
-            }
         },
         template: '<textarea>%VALUE%</textarea>'
     },
@@ -750,7 +747,7 @@ var BWidgetRegistry = {
      * Represents a toggle switch.
      */
     ToggleSwitch: {
-        parent: "Base",
+        parent: "CanBeDisabled",
         displayLabel: "Toggle Switch",
         paletteImageName: "jqm_toggle_switch.svg",
         properties: {
@@ -776,11 +773,6 @@ var BWidgetRegistry = {
                 defaultValue: "default",
                 htmlAttribute: "data-theme"
             },
-            disabled: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "disabled",
-            }
         },
         template: '<select data-role="slider"><option value="%VALUE1%">%LABEL1%</option><option value="%VALUE2%">%LABEL2%</option></select>',
         // jQM generates an div next to the slider, which is the actually clicked item when users try to click the flip toggle switch.
@@ -791,7 +783,7 @@ var BWidgetRegistry = {
      * Represents a select element.
      */
     SelectMenu: {
-        parent: "Base",
+        parent: "CanBeDisabled",
         paletteImageName: "jqm_select.svg",
         template: function(node) {
             var prop, code, length, i, child;
@@ -843,11 +835,6 @@ var BWidgetRegistry = {
                      children : []
                  }
             },
-            disabled: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "disabled",
-            }
         },
         zones: [
             {
@@ -940,7 +927,7 @@ var BWidgetRegistry = {
      * Represents an radio button element.
      */
     RadioButton: {
-        parent: "Base",
+        parent: "CanBeDisabled",
         displayLabel: "Radio Button",
         paletteImageName: "jqm_radio_button.svg",
         allowIn: "RadioGroup",
@@ -977,11 +964,6 @@ var BWidgetRegistry = {
                 defaultValue: "default",
                 htmlAttribute: "data-theme"
             },
-            disabled: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "disabled",
-            }
         },
         delegate: 'parent',
         template: function (node) {
@@ -1081,7 +1063,7 @@ var BWidgetRegistry = {
      * Represents an checkbox element.
      */
     Checkbox: {
-        parent: "Base",
+        parent: "CanBeDisabled",
         paletteImageName: "jqm_checkbox.svg",
         editable: {
             selector: "span > .ui-btn-text",
@@ -1114,11 +1096,6 @@ var BWidgetRegistry = {
                 defaultValue: "default",
                 htmlAttribute: "data-theme"
             },
-            disabled: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "disabled",
-            }
         },
         template: '<input type="checkbox"><label for="%ID%">%LABEL%</label>',
         delegate: 'parent'

@@ -526,6 +526,26 @@ var BWidgetRegistry = {
             if(prop !== "") {
                 code.attr("href", prop);
             }
+            prop = node.getProperty("icon");
+            if(prop !== "none") {
+                code.attr("data-icon", prop);
+            }
+            prop = node.getProperty("iconpos");
+            if(prop !== "left") {
+                code.attr("data-iconpos", prop);
+            }
+            prop = node.getProperty("theme");
+            if(prop !== "default") {
+                code.attr("data-theme", prop);
+            }
+            prop = node.getProperty("inline");
+            if(prop != false) {
+                code.attr("data-inline", prop);
+            }
+            prop = node.getProperty("transition");
+            if(prop !== "slide") {
+                code.attr("data-transition", prop);
+            }
             return code;
         }
     },

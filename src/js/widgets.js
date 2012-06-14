@@ -837,7 +837,7 @@ var BWidgetRegistry = {
             }
         ],
         delegate: function (domNode, admNode) {
-            if(admNode._properties.multiple == true) {
+            if(admNode.getProperty('multiple') == true) {
                 return $(domNode).parent();
             }
             return $(domNode).parent().parent();

@@ -775,6 +775,8 @@ var BWidgetRegistry = {
             } else {
                 code = $('<select></select>');
             }
+            // We need to create an option or the selece menu will be shown as
+            // blank, which looks non-professional.
             $('<option>' + node.getProperty("label") + '</option>')
                 .appendTo(code);
             prop = node.getProperty("options");

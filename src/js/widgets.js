@@ -242,6 +242,17 @@ var BWidgetRegistry = {
                 type: "string",
                 options: [ "default", "a", "b", "c", "d", "e" ],
                 defaultValue: "default",
+            },
+            dom_cache: {
+                displayName: "DOM Cache",
+                type: "boolean",
+                defaultValue: false,
+                htmlAttribute: "data-dom-cache",
+            },
+            title: {
+                type: "string",
+                defaultValue: "",
+                htmlAttribute: "data-title",
             }
         },
         redirect: {
@@ -416,7 +427,7 @@ var BWidgetRegistry = {
             {
                 name: "default",
                 cardinality: "N"
-            }
+            },
         ],
     },
 
@@ -437,12 +448,22 @@ var BWidgetRegistry = {
             }
         ],
         properties: {
+            icon: {
+                type: "string",
+                htmlAttribute: "data-icon",
+            },
             iconpos: {
                 type: "string",
                 options: [ "left", "top", "bottom", "right", "notext" ],
                 defaultValue: "top",
                 htmlAttribute: "data-iconpos",
-            }
+            },
+            theme: {
+                type: "string",
+                options: [ "default", "a", "b", "c", "d", "e" ],
+                defaultValue: "default",
+                htmlAttribute: "data-theme"
+            },
         },
         init: function (node) {
             // initial state is three buttons
@@ -609,6 +630,12 @@ var BWidgetRegistry = {
                 htmlAttribute: "data-iconpos",
                 invalidIn: "Navbar"
             },
+            iconshadow: {
+                type: "boolean",
+                defaultValue: "true",
+                htmlAttribute: "data-iconshadow",
+                displayName: "Icon Shadow"
+            },
             active: {
                 type: "boolean",
                 defaultValue: false,
@@ -648,7 +675,22 @@ var BWidgetRegistry = {
                         false: ""
                     }
                 }
-            }
+            },
+            corners: {
+                type: "boolean",
+                defaultValue: true,
+                htmlAttribute: "data-corners"
+            },
+            mini: {
+                type: "boolean",
+                defaultValue: "false",
+                htmlAttribute: "data-mini",
+            },
+            shadow: {
+                type: "boolean",
+                defaultValue: "true",
+                htmlAttribute: "data-shadow",
+            },
         },
         template: '<a data-role="button">%TEXT%</a>'
     },
@@ -739,7 +781,15 @@ var BWidgetRegistry = {
             disabled: {
                 type: "boolean",
                 defaultValue: false
-            }
+            },
+            mini: {
+                type: "boolean",
+                defaultValue: "false",
+            },
+            highlight: {
+                type: "boolean",
+                defaultValue: "false",
+            },
         },
         editable: {
             selector: "label",
@@ -785,6 +835,16 @@ var BWidgetRegistry = {
             prop = node.getProperty("disabled");
             if (prop == true) {
                 input.attr("disabled", "disabled");
+            }
+
+            prop = node.getProperty("mini");
+            if (prop === true) {
+                input.attr("data-mini", prop);
+            }
+
+            prop = node.getProperty("highlight");
+            if (prop === true) {
+                input.attr("data-highlight", prop);
             }
 
             code.append(input);
@@ -844,7 +904,7 @@ var BWidgetRegistry = {
                 type: "boolean",
                 defaultValue: false,
                 htmlAttribute: "disabled"
-            }
+            },
         },
         template: '<div data-role="fieldcontain"><label for="%ID%">%LABEL%</label><input type="text"/></div>',
     },
@@ -884,7 +944,24 @@ var BWidgetRegistry = {
                 type: "boolean",
                 defaultValue: false,
                 htmlAttribute: "disabled"
-            }
+            },
+            mini: {
+                type: "boolean",
+                htmlAttribute: "data-mini",
+                defaultValue: "false",
+            },
+            nativecontrol: {
+                displayName: "native control",
+                type: "boolean",
+                defaultValue: false,
+                htmlAttribute: {
+                    name: "data-role",
+                    value: {
+                        true: "none",
+                        false: ""
+                    }
+                }
+            },
         },
         template: '<textarea>%VALUE%</textarea>'
     },
@@ -919,10 +996,23 @@ var BWidgetRegistry = {
                 defaultValue: "default",
                 htmlAttribute: "data-theme"
             },
+            tracktheme: {
+                type: "string",
+                options: [ "default", "a", "b", "c", "d", "e" ],
+                defaultValue: "default",
+                htmlAttribute: "data-track-theme",
+                displayLable: "Track Theme", 
+            },
             disabled: {
                 type: "boolean",
                 defaultValue: false,
                 htmlAttribute: "disabled"
+            },
+            role: {
+                type: "string",
+                options: [ "none", "slider" ],
+                defaultValue: "slider",
+                htmlAttribute: "data-role",
             }
         },
         template: '<select data-role="slider"><option value="%VALUE1%">%LABEL1%</option><option value="%VALUE2%">%LABEL2%</option></select>',
@@ -1004,7 +1094,32 @@ var BWidgetRegistry = {
             disabled: {
                 type: "boolean",
                 defaultValue: false
-            }
+            },
+            inline: {
+                type: "boolean",
+                htmlAttribute: "data-inline",
+                defaultValue: "false",
+            },
+            mini: {
+                type: "boolean",
+                htmlAttribute: "data-mini",
+                defaultValue: "false",
+            },
+            icon: {
+                type: "string",
+                options: [ "none", "alert", "arrow-d", "arrow-l", "arrow-r",
+                           "arrow-u", "back", "check", "delete", "forward",
+                           "gear", "grid", "home", "info", "minus", "plus",
+                           "refresh", "search", "star", "custom" ],
+                defaultValue: "none",
+                htmlAttribute: "data-icon"
+            },
+            iconpos: {
+                htmlAttribute: "data-iconpos",
+                type: "string",
+                options: ["left", "right", "top", "bottom", "notext"],
+                defaultValue: "left",
+            },
         },
         zones: [
             {
@@ -1133,7 +1248,24 @@ var BWidgetRegistry = {
             disabled: {
                 type: "boolean",
                 defaultValue: false
-            }
+            },
+            mini: {
+                type: "boolean",
+                defaultValue: "false",
+                htmlAttribute: "data-mini",
+            },
+            nativecontrol: {
+                displayName: "native control",
+                type: "boolean",
+                defaultValue: false,
+                htmlAttribute: {
+                    name: "data-role",
+                    value: {
+                        true: "none",
+                        false: ""
+                    }
+                }
+            },
         },
         delegate: 'parent',
         template: function (node) {
@@ -1268,7 +1400,12 @@ var BWidgetRegistry = {
                 type: "boolean",
                 defaultValue: false,
                 htmlAttribute: "disabled"
-            }
+            },
+            mini: {
+                type: "boolean",
+                defaultValue: false,
+                htmlAttribute: "data-mini",
+            },
         },
         template: '<input type="checkbox"><label for="%ID%">%LABEL%</label>',
         delegate: 'parent'
@@ -1296,6 +1433,19 @@ var BWidgetRegistry = {
                 type: "boolean",
                 defaultValue: false,
                 htmlAttribute: "data-filter"
+            },
+            filter_theme: {
+                displayName: "filter theme",
+                type: "string",
+                options: [ "default", "a", "b", "c", "d", "e" ],
+                defaultValue: "default",
+                htmlAttribute: "data-filter-theme"
+            },
+            filter_placeholder: {
+                displayName: "filter placeholder",
+                type: "string",
+                defaultValue: "",
+                htmlAttribute: "data-filter-placeholder"
             },
             theme: {
                 type: "string",
@@ -1345,6 +1495,19 @@ var BWidgetRegistry = {
                 defaultValue: false,
                 htmlAttribute: "data-filter"
             },
+            filter_theme: {
+                displayName: "filter theme",
+                type: "string",
+                options: [ "default", "a", "b", "c", "d", "e" ],
+                defaultValue: "default",
+                htmlAttribute: "data-filter-theme"
+            },
+            filter_placeholder: {
+                displayName: "filter placeholder",
+                type: "string",
+                defaultValue: "",
+                htmlAttribute: "data-filter-placeholder"
+            },
             theme: {
                 type: "string",
                 options: [ "default", "a", "b", "c", "d", "e" ],
@@ -1357,7 +1520,7 @@ var BWidgetRegistry = {
                 options: [ "default", "a", "b", "c", "d", "e" ],
                 defaultValue: "default",
                 htmlAttribute: "data-divider-theme"
-            }
+            },
         },
         template: '<ol data-role="listview">',
         zones: [
@@ -1391,7 +1554,13 @@ var BWidgetRegistry = {
                 options: [ "default", "a", "b", "c", "d", "e" ],
                 defaultValue: "default",
                 htmlAttribute: "data-theme"
-            }
+            },
+            filtertext: {
+                displayName: "filter text",
+                type: "string",
+                defaultValue: "",
+                htmlAttribute: "data-filtertext",
+            },
         },
         template: '<li>%TEXT%</li>'
     },
@@ -1418,7 +1587,7 @@ var BWidgetRegistry = {
                 options: [ "default", "a", "b", "c", "d", "e" ],
                 defaultValue: "default",
                 htmlAttribute: "data-theme"
-            }
+            },
         },
         template: '<li data-role="list-divider">%TEXT%</li>'
     },
@@ -1744,7 +1913,24 @@ var BWidgetRegistry = {
                 options: [ "default", "a", "b", "c", "d", "e" ],
                 defaultValue: "default",
                 htmlAttribute: "data-content-theme"
-            }
+            },
+            collapsed: {
+                type: "boolean",
+                defaultValue: "true",
+                htmlAttribute: "data-collapsed",
+            },
+            iconpos: {
+                displayName: "Icon Position",
+                htmlAttribute: "data-iconpos",
+                type: "string",
+                options: ["left", "right", "top", "bottom", "notext"],
+                defaultValue: "left",
+            },
+            mini: {
+                htmlAttribute: "data-mini",
+                type: "boolean",
+                defaultValue: "false",
+            },
         },
         zones: [
             {
@@ -1787,7 +1973,18 @@ var BWidgetRegistry = {
                 options: [ "default", "a", "b", "c", "d", "e" ],
                 defaultValue: "default",
                 htmlAttribute: "data-content-theme"
-            }
+            },
+            iconpos: {
+                type: "string",
+                options: [ "left", "top", "bottom", "right", "notext" ],
+                defaultValue: "left",
+                htmlAttribute: "data-iconpos",
+            },
+            mini: {
+                type: "boolean",
+                defaultValue: "false",
+                htmlAttribute: "data-mini",
+            },
         },
         zones: [
             {

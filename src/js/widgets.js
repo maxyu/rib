@@ -903,7 +903,27 @@ var BWidgetRegistry = {
             disabled: {
                 type: "boolean",
                 defaultValue: false,
+                htmlSelector: "input",
                 htmlAttribute: "disabled"
+            },
+            mini: {
+                type: "boolean",
+                htmlSelector: "input",
+                htmlAttribute: "data-mini",
+                defaultValue: "false",
+            },
+            nativecontrol: {
+                displayName: "native control",
+                type: "boolean",
+                defaultValue: false,
+                htmlSelector: "input",
+                htmlAttribute: {
+                    name: "data-role",
+                    value: {
+                        true: "none",
+                        false: ""
+                    }
+                }
             },
         },
         template: '<div data-role="fieldcontain"><label for="%ID%">%LABEL%</label><input type="text"/></div>',

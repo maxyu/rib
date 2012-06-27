@@ -244,7 +244,7 @@ var BWidgetRegistry = {
                 defaultValue: "default",
             },
             dom_cache: {
-                displayName: "DOM Cache",
+                displayName: "Cache in DOM",
                 type: "boolean",
                 defaultValue: false,
                 htmlAttribute: "data-dom-cache",
@@ -427,7 +427,7 @@ var BWidgetRegistry = {
             {
                 name: "default",
                 cardinality: "N"
-            },
+            }
         ],
     },
 
@@ -448,21 +448,11 @@ var BWidgetRegistry = {
             }
         ],
         properties: {
-            icon: {
-                type: "string",
-                htmlAttribute: "data-icon",
-            },
             iconpos: {
                 type: "string",
                 options: [ "left", "top", "bottom", "right", "notext" ],
                 defaultValue: "top",
                 htmlAttribute: "data-iconpos",
-            },
-            theme: {
-                type: "string",
-                options: [ "default", "a", "b", "c", "d", "e" ],
-                defaultValue: "default",
-                htmlAttribute: "data-theme"
             },
         },
         init: function (node) {
@@ -683,12 +673,12 @@ var BWidgetRegistry = {
             },
             mini: {
                 type: "boolean",
-                defaultValue: "false",
+                defaultValue: false,
                 htmlAttribute: "data-mini",
             },
             shadow: {
                 type: "boolean",
-                defaultValue: "true",
+                defaultValue: true,
                 htmlAttribute: "data-shadow",
             },
         },
@@ -785,10 +775,14 @@ var BWidgetRegistry = {
             mini: {
                 type: "boolean",
                 defaultValue: "false",
+                htmlAttribute: "data-mini",
+                htmlSelector: "input",
             },
             highlight: {
                 type: "boolean",
                 defaultValue: "false",
+                htmlAttribute: "data-highlight",
+                htmlSelector: "input",
             },
         },
         editable: {
@@ -835,16 +829,6 @@ var BWidgetRegistry = {
             prop = node.getProperty("disabled");
             if (prop == true) {
                 input.attr("disabled", "disabled");
-            }
-
-            prop = node.getProperty("mini");
-            if (prop === true) {
-                input.attr("data-mini", prop);
-            }
-
-            prop = node.getProperty("highlight");
-            if (prop === true) {
-                input.attr("data-highlight", prop);
             }
 
             code.append(input);
@@ -1028,16 +1012,28 @@ var BWidgetRegistry = {
                 defaultValue: false,
                 htmlAttribute: "disabled"
             },
-            role: {
-                type: "string",
-                options: [ "none", "slider" ],
-                defaultValue: "slider",
-                htmlAttribute: "data-role",
-            }
+            nativecontrol: {
+                displayName: "native control",
+                type: "boolean",
+                defaultValue: false,
+                htmlAttribute: {
+                    name: "data-role",
+                    value: {
+                        true: "none",
+                        false: ""
+                    }
+                }
+            },
         },
         template: '<select data-role="slider"><option value="%VALUE1%">%LABEL1%</option><option value="%VALUE2%">%LABEL2%</option></select>',
         // jQM generates an div next to the slider, which is the actually clicked item when users try to click the flip toggle switch.
-        delegate:"next",
+        //delegate:"next",
+        delegate: function (domNode, admNode) {
+            if(admNode.getProperty("nativecontrol") === true)
+                return $(domNode);
+            else
+                return $(domNode).next();
+        },
     },
 
     /**
@@ -1138,7 +1134,7 @@ var BWidgetRegistry = {
                 htmlAttribute: "data-iconpos",
                 type: "string",
                 options: ["left", "right", "top", "bottom", "notext"],
-                defaultValue: "left",
+                defaultValue: "right",
             },
         },
         zones: [
@@ -1464,7 +1460,7 @@ var BWidgetRegistry = {
             filter_placeholder: {
                 displayName: "filter placeholder",
                 type: "string",
-                defaultValue: "",
+                defaultValue: "Filter items...",
                 htmlAttribute: "data-filter-placeholder"
             },
             theme: {
@@ -1578,7 +1574,7 @@ var BWidgetRegistry = {
             filtertext: {
                 displayName: "filter text",
                 type: "string",
-                defaultValue: "",
+                defaultValue: "List Item",
                 htmlAttribute: "data-filtertext",
             },
         },

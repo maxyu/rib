@@ -107,6 +107,14 @@
  *
  * @class
  */
+var PropertyBag = {
+    mini: {
+        type: "boolean",
+        defaultValue: false,
+        htmlAttribute: "data-mini",
+    },
+};
+
 var BWidgetRegistry = {
     /**
      * "Base class" for other widget types, with an "id" string property.
@@ -671,11 +679,7 @@ var BWidgetRegistry = {
                 defaultValue: true,
                 htmlAttribute: "data-corners"
             },
-            mini: {
-                type: "boolean",
-                defaultValue: false,
-                htmlAttribute: "data-mini",
-            },
+            mini: Property.mini,
             shadow: {
                 type: "boolean",
                 defaultValue: true,

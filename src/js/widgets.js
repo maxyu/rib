@@ -679,7 +679,7 @@ var BWidgetRegistry = {
                 defaultValue: true,
                 htmlAttribute: "data-corners"
             },
-            mini: Property.mini,
+            mini: PropertyBag.mini,
             shadow: {
                 type: "boolean",
                 defaultValue: true,

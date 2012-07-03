@@ -1009,7 +1009,7 @@ var BWidgetRegistry = {
                 options: [ "default", "a", "b", "c", "d", "e" ],
                 defaultValue: "default",
                 htmlAttribute: "data-track-theme",
-                displayLable: "Track Theme", 
+                displayName: "Track Theme", 
             },
             disabled: {
                 type: "boolean",

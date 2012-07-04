@@ -107,14 +107,6 @@
  *
  * @class
  */
-var PropertyBag = {
-    mini: {
-        type: "boolean",
-        defaultValue: false,
-        htmlAttribute: "data-mini",
-    },
-};
-
 var BWidgetRegistry = {
     /**
      * "Base class" for other widget types, with an "id" string property.
@@ -679,7 +671,6 @@ var BWidgetRegistry = {
                 defaultValue: true,
                 htmlAttribute: "data-corners"
             },
-            mini: PropertyBag.mini,
             shadow: {
                 type: "boolean",
                 defaultValue: true,
@@ -953,11 +944,6 @@ var BWidgetRegistry = {
                 defaultValue: false,
                 htmlAttribute: "disabled"
             },
-            mini: {
-                type: "boolean",
-                htmlAttribute: "data-mini",
-                defaultValue: "false",
-            },
             nativecontrol: {
                 displayName: "native control",
                 type: "boolean",
@@ -1120,11 +1106,6 @@ var BWidgetRegistry = {
                 htmlAttribute: "data-inline",
                 defaultValue: "false",
             },
-            mini: {
-                type: "boolean",
-                htmlAttribute: "data-mini",
-                defaultValue: "false",
-            },
             icon: {
                 type: "string",
                 options: [ "none", "alert", "arrow-d", "arrow-l", "arrow-r",
@@ -1268,11 +1249,6 @@ var BWidgetRegistry = {
             disabled: {
                 type: "boolean",
                 defaultValue: false
-            },
-            mini: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "data-mini",
             },
             nativecontrol: {
                 displayName: "native control",
@@ -1420,11 +1396,6 @@ var BWidgetRegistry = {
                 type: "boolean",
                 defaultValue: false,
                 htmlAttribute: "disabled"
-            },
-            mini: {
-                type: "boolean",
-                defaultValue: false,
-                htmlAttribute: "data-mini",
             },
         },
         template: '<input type="checkbox"><label for="%ID%">%LABEL%</label>',
@@ -1946,11 +1917,6 @@ var BWidgetRegistry = {
                 options: ["left", "right", "top", "bottom", "notext"],
                 defaultValue: "left",
             },
-            mini: {
-                htmlAttribute: "data-mini",
-                type: "boolean",
-                defaultValue: "false",
-            },
         },
         zones: [
             {
@@ -1999,11 +1965,6 @@ var BWidgetRegistry = {
                 options: [ "left", "top", "bottom", "right", "notext" ],
                 defaultValue: "left",
                 htmlAttribute: "data-iconpos",
-            },
-            mini: {
-                type: "boolean",
-                defaultValue: "false",
-                htmlAttribute: "data-mini",
             },
         },
         zones: [

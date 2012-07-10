@@ -652,8 +652,8 @@ var BWidgetRegistry = {
                 htmlAttribute: {
                     name: "class",
                     value: {
-                        true: "ui-btn-active",
-                        false: ""
+                        "true": "ui-btn-active",
+                        "false": ""
                     }
                 }
             },
@@ -674,8 +674,8 @@ var BWidgetRegistry = {
                 htmlAttribute: {
                     name: "data-rel",
                     value: {
-                        true: "back",
-                        false: ""
+                        "true": "back",
+                        "false": ""
                     }
                 }
             },

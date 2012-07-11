@@ -86,7 +86,7 @@ var BCommonProperties = {
         options: [ "default", "a", "b", "c", "d", "e" ],
         defaultValue: "default",
         htmlAttribute: "data-track-theme",
-    }),
+    },
 };
 
 /**
@@ -641,7 +641,7 @@ var BWidgetRegistry = {
                 invalidIn: "Navbar"
             }),
             iconshadow: {
-                displayName: "icon shadow"
+                displayName: "icon shadow",
                 type: "boolean",
                 defaultValue: true,
                 htmlAttribute: "data-iconshadow",

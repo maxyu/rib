@@ -40,6 +40,11 @@ var BCommonProperties = {
         defaultValue: "left",
         htmlAttribute: "data-iconpos"
     },
+    inline: {
+        type: "boolean",
+        defaultValue: false,
+        htmlAttribute: "data-inline",
+    },
     mini: {
         type: "boolean",
         defaultValue: false,
@@ -48,6 +53,18 @@ var BCommonProperties = {
             value: {
                 "true": "true",
                 "false": "false"
+            }
+        }
+    },
+    nativecontrol: {
+        displayName: "native control",
+        type: "boolean",
+        defaultValue: false,
+        htmlAttribute: {
+            name: "data-role",
+            value: {
+                true: "none",
+                false: ""
             }
         }
     },
@@ -62,23 +79,6 @@ var BCommonProperties = {
         options: [ "default", "a", "b", "c", "d", "e" ],
         defaultValue: "default",
         htmlAttribute: "data-theme"
-    },
-    nativecontrol: {
-        displayName: "native control",
-        type: "boolean",
-        defaultValue: false,
-        htmlAttribute: {
-            name: "data-role",
-            value: {
-                true: "none",
-                false: ""
-            }
-        }
-    },
-    inline: {
-        type: "boolean",
-        defaultValue: false,
-        htmlAttribute: "data-inline",
     },
 };
 

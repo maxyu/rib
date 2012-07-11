@@ -634,10 +634,10 @@ var BWidgetRegistry = {
                 invalidIn: "Navbar"
             }),
             iconshadow: {
+                displayName: "icon shadow"
                 type: "boolean",
                 defaultValue: true,
                 htmlAttribute: "data-iconshadow",
-                displayName: "Icon Shadow"
             },
             mini: BCommonProperties.mini,
             active: {

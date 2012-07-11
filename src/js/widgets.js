@@ -322,12 +322,6 @@ var BWidgetRegistry = {
                 htmlAttribute: "id"
             },
             theme: BCommonProperties.theme,
-            dom_cache: {
-                displayName: "Cache in DOM",
-                type: "boolean",
-                defaultValue: false,
-                htmlAttribute: "data-dom-cache",
-            },
             title: {
                 type: "string",
                 defaultValue: "",

@@ -80,6 +80,13 @@ var BCommonProperties = {
         defaultValue: "default",
         htmlAttribute: "data-theme"
     },
+    track_theme: {
+        displayName: "track theme",
+        type: "string",
+        options: [ "default", "a", "b", "c", "d", "e" ],
+        defaultValue: "default",
+        htmlAttribute: "data-track-theme",
+    }),
 };
 
 /**
@@ -822,9 +829,7 @@ var BWidgetRegistry = {
             theme: $.extend({}, BCommonProperties.theme, {
                 htmlSelector: "input"
             }),
-            track_theme: $.extend({}, BCommonProperties.theme, {
-                displayName: "track theme",
-                htmlAttribute: "data-track-theme",
+            track_theme: $.extend({}, BCommonProperties.track_theme, {
                 htmlSelector: "input"
             }),
             disabled: $.extend({}, BCommonProperties.disabled, {
@@ -979,10 +984,7 @@ var BWidgetRegistry = {
             },
             mini: BCommonProperties.mini,
             theme: BCommonProperties.theme,
-            track_theme: $.extend({}, BCommonProperties.theme, {
-                displayName: "track theme",
-                htmlAttribute: "data-track-theme",
-            }),
+            track_theme: BCommonProperties.track_theme,
             disabled: BCommonProperties.disabled,
             nativecontrol: BCommonProperties.nativecontrol,
         },

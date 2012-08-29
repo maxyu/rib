@@ -94,7 +94,7 @@
         },
 
         _modelUpdatedHandler: function(event, widget) {
-            var affectedWidget, id;
+            var affectedWidget, id, value;
             widget = widget || this;
             if (event && event.type === "propertyChanged") {
                 if (event.node.getType() === 'Design') {
@@ -102,9 +102,18 @@
                 }
                 id = event.property + '-value';
                 affectedWidget = widget.element.find('#' + id);
-                if(event.newValue != affectedWidget.val()) {
+                if (affectedWidget.attr('type') !== 'checkbox') {
+                    value = affectedWidget.val();
+                } else {
+                    value = Boolean(affectedWidget.attr('checked'));
+                }
+                if (event.newValue !== value) {
                     affectedWidget[0].scrollIntoViewIfNeeded();
-                    affectedWidget.effect('highlight', {}, 1000);
+                    if(typeof(event.newValue) === 'boolean') {
+                        affectedWidget.effect('pulsate', { times:3 }, 200);
+                    } else {
+                        affectedWidget.effect('highlight', {}, 1000);
+                    }
                 }
                 widget._setProperty(event.property, event.newValue);
             } else {

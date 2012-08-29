@@ -90,12 +90,19 @@
         },
 
         _modelUpdatedHandler: function(event, widget) {
+            var affectedWidget, id;
             widget = widget || this;
             if (event && event.type === "propertyChanged") {
                 if (event.node.getType() === 'Design') {
                     return;
                 }
-                widget._setProperty(event.property, event.newValue);
+                id = event.property + '-value';
+                affectedWidget = widget.element.find('#' + id);
+                if(event.newValue != affectedWidget.val()) {
+                    affectedWidget[0].scrollIntoViewIfNeeded();
+                    affectedWidget.effect('highlight', {}, 1000);
+                    widget._setProperty(event.property, event.newValue);
+                }
             } else {
                 widget.refresh(event,widget);
             }

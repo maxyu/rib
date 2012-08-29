@@ -86,7 +86,11 @@
 
         _setProperty: function(property, value) {
             var viewId = property + '-value';
-            this.element.find("#" + viewId).val(value);
+            if (typeof(value) === 'boolean') {
+                this.element.find("#" + viewId).attr('checked', value);
+            } else {
+                this.element.find("#" + viewId).val(value);
+            }
         },
 
         _modelUpdatedHandler: function(event, widget) {
@@ -101,8 +105,8 @@
                 if(event.newValue != affectedWidget.val()) {
                     affectedWidget[0].scrollIntoViewIfNeeded();
                     affectedWidget.effect('highlight', {}, 1000);
-                    widget._setProperty(event.property, event.newValue);
                 }
+                widget._setProperty(event.property, event.newValue);
             } else {
                 widget.refresh(event,widget);
             }

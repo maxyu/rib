@@ -94,7 +94,8 @@
 
             widget = widget || this;
             if (event && event.type === "propertyChanged") {
-                if (event.node.getType() === 'Design') {
+                if (event.node.getType() === 'Design'
+                    && event.property !== 'css') {
                     return;
                 }
                 widget._setProperty(event.property, event.newValue);
